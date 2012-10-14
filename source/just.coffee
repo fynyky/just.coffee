@@ -4,7 +4,7 @@
 # Element.prototype.oncreate
 # Element.prototype.attribute
 # ------------------------------------------
- 
+
 # main function for making nodes
 window.node = (nameOrNode, oncreate)->
   
