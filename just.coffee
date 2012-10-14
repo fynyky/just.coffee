@@ -18,25 +18,28 @@ window.node = (nameOrNode, oncreate)->
   else
     name = nameOrNode
     tag = switch name
-      when "a","abbr","acronym","address","applet","area"
-          ,"b","base","basefont","bdo","big","blockquote","body","br","button"
-          ,"caption","center","cite","code","col","colgroup"
-          ,"dd","del","dfn","dir","div","dl","dt"
-          ,"em"
-          ,"fieldset","font","form","frame","frameset"
-          ,"h1","h2","h3","h4","h5","h6","head","hr","html"
+      when "a","abbr","acronym","address","applet","area", "article","aside","audio"
+          ,"b","bdi","base","basefont","bdo","big","blockquote","body","br","button"
+          ,"canvas","caption","center","cite","code","col","colgroup","command"
+          ,"data","datagrid","datalist","dd","del","details","dfn","dir","div","dl","dt"
+          ,"em","embed","eventsource"
+          ,"fieldset","figcaption","figure","font","footer","form","frame","frameset"
+          ,"h1","h2","h3","h4","h5","h6","head","header","hgroup","hr","html"
           ,"i","iframe","img","input","ins","isindex"
-          ,"kbd"
+          ,"kbd","keygen"
           ,"label","legend","li","link"
-          ,"map","menu","meta"
+          ,"mark","map","menu","meta","meter"
+          ,"nav"
           ,"noframes","noscript"
-          ,"object","ol","optgroup","option"
-          ,"p","param","pre"
+          ,"object","ol","optgroup","option","output"
+          ,"p","param","pre","progress"
           ,"q"
-          ,"s","samp","script","select","small","span","strike","strong","style","sub","sup"
-          ,"table","tbody","td","textarea","tfoot","th","thead","title","tr","tt"
+          ,"ruby","rp","rt"
+          ,"s","samp","script","section","select","small","source","span","strike","strong","style","sub","summary","sup"
+          ,"table","tbody","td","textarea","tfoot","th","thead","time","title","tr","track","tt"
           ,"u","ul"
-          ,"var" then name
+          ,"var","video"
+          ,"wbr" then name
       else "div"
     newNode = document.createElement tag
     newNode.className = name
@@ -56,7 +59,12 @@ Node.prototype.node = (name, oncreate)->
   @appendChild newNode
   return newNode
 
+# syntactic sugar for making text nodes more "declarative"
+Node.prototype.text = (value)->
+  @appendChild document.createTextNode value
+
 
 # syntactic sugar for making attributs more "declarative"
 Node.prototype.attribute = (name, value)->
   @setAttribute name, value
+
