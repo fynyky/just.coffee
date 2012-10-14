@@ -49,7 +49,7 @@ window.node = (namesOrNode, oncreate)->
     validTags = (name for name in names when validHTMLTags.indexOf name >= 0)
     tag = validTags[0] ? "div"
     newNode = document.createElement tag
-    newNode.className = names
+    newNode.className = namesOrNode
   
   # regardless of where it came from
   # bind and perform the oncreate function
