@@ -31,7 +31,7 @@ validHTMLTags = [
 ] 
 
 # main function for making nodes
-window.node = (namesOrNode, oncreate)->
+window.element = (namesOrNode, oncreate)->
   
   # if function is passed an already built element
   # then no need to build it
@@ -53,25 +53,32 @@ window.node = (namesOrNode, oncreate)->
   
   # regardless of where it came from
   # bind and perform the oncreate function
-  newNode.oncreate = oncreate
-  if newNode.oncreate? then do newNode.oncreate
+  # if its a string - then as a shortcut add it as its innerHTML
+  if typeof oncreate is "function"
+    newNode.oncreate = oncreate
+  else if typeof oncreate is "string"
+    newNode.oncreate = -> @innerHTML = oncreate
+  do newNode.oncreate if newNode.oncreate?
+    
+
   
   # return it
   return newNode
 
 
 # build the node then stick it to parent
-Node.prototype.node = (name, oncreate)->
-  newNode = window.node name,oncreate
+Element.prototype.element = (name, oncreate)->
+  newNode = window.element name,oncreate
   @appendChild newNode
   return newNode
 
 # syntactic sugar for making text nodes more "declarative"
-Node.prototype.text = (value)->
+# TODO this isnt working!!!!!
+# "a" elements already have a property text
+Element.prototype.text = (value)->
   @appendChild document.createTextNode value
 
-
 # syntactic sugar for making attributs more "declarative"
-Node.prototype.attribute = (name, value)->
+Element.prototype.attribute = (name, value)->
   @setAttribute name, value
 
