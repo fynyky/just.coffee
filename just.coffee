@@ -31,7 +31,7 @@ validHTMLTags = [
 ] 
 
 # main function for making nodes
-window.node = (namesOrNode, oncreate)->
+window.element = (namesOrNode, oncreate)->
   
   # if function is passed an already built element
   # then no need to build it
@@ -61,17 +61,17 @@ window.node = (namesOrNode, oncreate)->
 
 
 # build the node then stick it to parent
-Node.prototype.node = (name, oncreate)->
+Element.prototype.element = (name, oncreate)->
   newNode = window.node name,oncreate
   @appendChild newNode
   return newNode
 
 # syntactic sugar for making text nodes more "declarative"
-Node.prototype.text = (value)->
+Element.prototype.text = (value)->
   @appendChild document.createTextNode value
 
 
 # syntactic sugar for making attributs more "declarative"
-Node.prototype.attribute = (name, value)->
+Element.prototype.attribute = (name, value)->
   @setAttribute name, value
 
