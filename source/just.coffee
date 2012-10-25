@@ -1,6 +1,7 @@
 # ----------------pollution----------------
-# window.node
-# Element.prototype.node
+# window.element
+# Element.prototype.element
+# Element.prototype.text
 # Element.prototype.oncreate
 # Element.prototype.attribute
 # ------------------------------------------
@@ -31,25 +32,25 @@ validHTMLTags = [
 ] 
 
 # main function for making nodes
-window.element = (namesOrNode, oncreate)->
+window.element = (namesOrElement, oncreate)->
   
   # if function is passed an already built element
   # then no need to build it
-  if namesOrNode instanceof Node then newNode = namesOrNode
+  if namesOrElement instanceof Element then newNode = namesOrElement
   
   # create the element of the appropriate type
   # if the name is already a valid html tag then create one of that type
   # otherwise default to a div and just set the classname
-  else if typeof namesOrNode is "string"
+  else if typeof namesOrElement is "string"
   
     # split the string to the individual class names
     # check to see if any of them are valid HTML tags
     # default to div otherwise
-    names = namesOrNode.split " "
+    names = namesOrElement.split " "
     validTags = (name for name in names when validHTMLTags.indexOf name >= 0)
     tag = validTags[0] ? "div"
     newNode = document.createElement tag
-    newNode.className = namesOrNode
+    newNode.className = namesOrElement
   
   # regardless of where it came from
   # bind and perform the oncreate function
@@ -57,14 +58,13 @@ window.element = (namesOrNode, oncreate)->
   if typeof oncreate is "function"
     newNode.oncreate = oncreate
   else if typeof oncreate is "string"
-    newNode.oncreate = -> @innerHTML = oncreate
+    newNode.oncreate = -> @appendChild document.createTextNode oncreate
   do newNode.oncreate if newNode.oncreate?
     
-
+  
   
   # return it
   return newNode
-
 
 # build the node then stick it to parent
 Element.prototype.element = (name, oncreate)->
