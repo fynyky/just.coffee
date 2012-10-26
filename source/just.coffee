@@ -34,9 +34,10 @@ validHTMLTags = [
 # main function for making nodes
 window.element = (namesOrElement, oncreate)->
   
+  
   # if function is passed an already built element
   # then no need to build it
-  if namesOrElement instanceof Element then newNode = namesOrElement
+  if namesOrElement instanceof Element then newElement = namesOrElement
   
   # create the element of the appropriate type
   # if the name is already a valid html tag then create one of that type
@@ -49,28 +50,27 @@ window.element = (namesOrElement, oncreate)->
     names = namesOrElement.split " "
     validTags = (name for name in names when validHTMLTags.indexOf name >= 0)
     tag = validTags[0] ? "div"
-    newNode = document.createElement tag
-    newNode.className = namesOrElement
+    newElement = document.createElement tag
+    newElement.className = namesOrElement
   
   # regardless of where it came from
   # bind and perform the oncreate function
   # if its a string - then as a shortcut add it as its innerHTML
   if typeof oncreate is "function"
-    newNode.oncreate = oncreate
+    newElement.oncreate = oncreate
   else if typeof oncreate is "string"
-    newNode.oncreate = -> @appendChild document.createTextNode oncreate
-  do newNode.oncreate if newNode.oncreate?
+    newElement.oncreate = -> @appendChild document.createTextNode oncreate
     
-  
+  do newElement.oncreate if oncreate?
   
   # return it
-  return newNode
+  return newElement
 
 # build the node then stick it to parent
 Element.prototype.element = (name, oncreate)->
-  newNode = window.element name,oncreate
-  @appendChild newNode
-  return newNode
+  newElement = window.element name, oncreate
+  @appendChild newElement
+  return newElement
 
 # syntactic sugar for making text nodes more "declarative"
 # TODO this isnt working!!!!!

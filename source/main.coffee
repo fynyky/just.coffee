@@ -1,28 +1,34 @@
 #@codekit-prepend "just.coffee";
 document.body.element "background"
+
+CoffeeCodeBlock = (string)->
+  @element "pre", ->
+    @element "code prettyprint lang-coffee", string
+
+
 document.body.element "article", ->
     
   @element "header", ->
-    @element "h1", "just.coffee"
-    @element "p", "Build the DOM using Coffeescript"
+    @element "div title", "just.coffee"
+    @element "subtitle", "Build the DOM using Coffeescript"
   
-  @element "section", ->
-    @element "what", ->
+  @element "section split", ->
+    @element "section", ->
       @element "h1", "What"
       @element "p", "Simple helper functions that let you build the DOM like this"
-      @element "pre", """
-                       @element "why", ->
-                         @element "h1", "Why"
-                         @element "ul", ->
-                           @element "li", "Less cognitive dissonance switching between HTML and script"
-                           @element "li", "There is one hierarchy: The code hierarchy"
-                           @element "li", "Full code flexibility in creating templates"
-                           @element "li", "No magic, just functions, it's just coffeescript"
-                         
-                       
-                       """
+      @element CoffeeCodeBlock """
+        @element "why", ->
+          @element "h1", "Why"
+          @element "ul", ->
+            @element "li", "Less cognitive dissonance switching between HTML and script"
+            @element "li", "There is one hierarchy: The code hierarchy"
+            @element "li", "Full code flexibility in creating templates"
+            @element "li", "No magic, just functions, it's just coffeescript"
+          
+        
+      """      
     
-    @element "why", ->
+    @element "section", ->
       @element "h1", "Why"
       @element "ul", ->
         @element "li", "Less context switching between HTML and script"
@@ -31,7 +37,7 @@ document.body.element "article", ->
         @element "li", "No magic, just functions, it's just coffeescript"
       
     
-    @element "how"  , ->
+    @element "section"  , ->
       @element "h1", "How"
       @element "ol", ->
         @element "li", ->
@@ -46,7 +52,7 @@ document.body.element "article", ->
   @element "section", ->
     @element "h1", "A rose by any other name"
     @element "p", "To create an element, just provide the class name(s) you want it to have."
-    @element "pre", """
+    @element CoffeeCodeBlock """
                     # Class names which are valid HTML tags will parse accordingly
                     element "h1"   # <h1 class="h1"></h1>
                     element "p"    # <p class="p"></p>
@@ -70,7 +76,7 @@ document.body.element "article", ->
     @element "h1", "I heard you like elements"
     @element "p", "Each Element also has a element function that creates an element and adds it as a child node to the Element."
     
-    @element "pre", """
+    @element CoffeeCodeBlock """
                     foo = element "foo"
                     # Just creates an free standing <div class="foo"></div>
 
@@ -81,7 +87,7 @@ document.body.element "article", ->
                     # </div>
                     """
     @element "p", "Use this inside an elements oncreate function with the @ symbol. This allows declarative creation of DOM hierarchies."
-    @element "pre", """
+    @element CoffeeCodeBlock """
                     foobarbazqux = element "foo", ->
                       @element "bar", ->
                         @element "baz", ->
@@ -99,7 +105,7 @@ document.body.element "article", ->
   @element "section", ->
     @element "h1", "Snack packs"
     @element "p", "To make something modular just wrap it in a function"
-    @element "pre", """
+    @element CoffeeCodeBlock """
                     FoobarSnack = (snackName)->
                       element "foo", ->
                         element "bar", snackName
@@ -122,3 +128,5 @@ document.body.element "article", ->
                     # </div>
                     """
   
+
+do prettyPrint

@@ -1,0 +1,105 @@
+@import url(http://fonts.googleapis.com/css?family=Quicksand:300);
+@import url(http://fonts.googleapis.com/css?family=Muli:300);
+/* line 12, source/main.sass */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* line 15, source/main.sass */
+body {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -ms-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-box-align: center;
+  box-align: center; }
+
+/* line 24, source/main.sass */
+.article {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -ms-box-orient: vertical;
+  box-orient: vertical;
+  padding: 40px;
+  max-width: 1000px;
+  font-family: "Muli", sans-serif;
+  font-size: 16px; }
+  /* line 31, source/main.sass */
+  .article .header {
+    margin-bottom: 80px;
+    font-family: "Quicksand", sans-serif; }
+    /* line 34, source/main.sass */
+    .article .header .title {
+      display: inline;
+      font-size: 40px;
+      margin-right: 20px; }
+    /* line 38, source/main.sass */
+    .article .header .subtitle {
+      display: inline;
+      font-size: 20px; }
+  /* line 41, source/main.sass */
+  .article .section {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -ms-box-orient: vertical;
+    box-orient: vertical;
+    margin-bottom: 60px; }
+    /* line 45, source/main.sass */
+    .article .section:last-child {
+      margin-bottom: 0px; }
+    /* line 47, source/main.sass */
+    .article .section .h1 {
+      margin: 0px;
+      font-family: "Quicksand", sans-serif;
+      font-size: 30px; }
+    /* line 51, source/main.sass */
+    .article .section .pre {
+      padding: 20px;
+      background: #eeeeee; }
+      /* line 54, source/main.sass */
+      .article .section .pre .code {
+        font-family: Courier New, monospace;
+        font-size: 16px; }
+    /* line 57, source/main.sass */
+    .article .section.split {
+      -webkit-box-orient: horizontal;
+      -moz-box-orient: horizontal;
+      -ms-box-orient: horizontal;
+      box-orient: horizontal;
+      -webkit-box-pack: center;
+      -moz-box-pack: center;
+      -ms-box-pack: center;
+      box-pack: center; }
+      @media (max-width: 1000px) {
+        /* line 57, source/main.sass */
+        .article .section.split {
+          -webkit-box-orient: vertical;
+          -moz-box-orient: vertical;
+          -ms-box-orient: vertical;
+          box-orient: vertical;
+          -webkit-box-pack: start;
+          -moz-box-pack: start;
+          -ms-box-pack: start;
+          box-pack: start; } }
+      /* line 63, source/main.sass */
+      .article .section.split .section {
+        width: 100%;
+        -webkit-box-flex: 1;
+        -moz-box-flex: 1;
+        -ms-box-flex: 1;
+        box-flex: 1; }
