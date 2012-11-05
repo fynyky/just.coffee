@@ -4,7 +4,7 @@
 
   validHTMLTags = ["a", "abbr", "acronym", "address", "applet", "area", "article", "aside", "audio", "b", "bdi", "base", "basefont", "bdo", "big", "blockquote", "body", "br", "button", "canvas", "caption", "center", "cite", "code", "col", "colgroup", "command", "data", "datagrid", "datalist", "dd", "del", "details", "dfn", "dir", "div", "dl", "dt", "em", "embed", "eventsource", "fieldset", "figcaption", "figure", "font", "footer", "form", "frame", "frameset", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "iframe", "img", "input", "ins", "isindex", "kbd", "keygen", "label", "legend", "li", "link", "mark", "map", "menu", "meta", "meter", "nav", "noframes", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "pre", "progress", "q", "ruby", "rp", "rt", "s", "samp", "script", "section", "select", "small", "source", "span", "strike", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "tt", "u", "ul", "var", "video", "wbr"];
 
-  window.element = function(namesOrElement, oncreate) {
+  window.e = function(namesOrElement, oncreate) {
     var name, names, newElement, tag, validTags, _ref;
     if (namesOrElement instanceof Element) {
       newElement = namesOrElement;
@@ -31,6 +31,10 @@
       newElement.oncreate = function() {
         return this.appendChild(document.createTextNode(oncreate));
       };
+    } else if (oncreate instanceof Element) {
+      newElement.oncreate = function() {
+        return this.appendChild(oncreate);
+      };
     }
     if (oncreate != null) {
       newElement.oncreate();
@@ -38,14 +42,14 @@
     return newElement;
   };
 
-  Element.prototype.element = function(name, oncreate) {
+  Element.prototype.e = function(name, oncreate) {
     var newElement;
-    newElement = window.element(name, oncreate);
+    newElement = window.e(name, oncreate);
     this.appendChild(newElement);
     return newElement;
   };
 
-  Element.prototype.text = function(value) {
+  Element.prototype.t = function(value) {
     return this.appendChild(document.createTextNode(value));
   };
 
@@ -59,67 +63,132 @@
   */
 
 
-  document.body.element("background");
+  document.body.e("background");
 
   CoffeeCodeBlock = function(string) {
-    return this.element("pre", function() {
-      return this.element("code prettyprint lang-coffee", string);
-    });
+    return this.e("pre", this.e("code prettyprint lang-coffee", string));
   };
 
-  document.body.element("article", function() {
-    this.element("header", function() {
-      this.element("div title", "just.coffee");
-      return this.element("subtitle", "Build the DOM using Coffeescript");
+  document.body.e("article", function() {
+    this.e("header", function() {
+      this.e("h1 title", "just.coffee");
+      return this.e("span subtitle", "Build the DOM using Coffeescript");
     });
-    this.element("section split", function() {
-      this.element("section", function() {
-        this.element("h1", "What");
-        this.element("p", "Simple helper functions that let you build the DOM like this");
-        return this.element(CoffeeCodeBlock("@element \"why\", ->\n  @element \"h1\", \"Why\"\n  @element \"ul\", ->\n    @element \"li\", \"Less cognitive dissonance switching between HTML and script\"\n    @element \"li\", \"There is one hierarchy: The code hierarchy\"\n    @element \"li\", \"Full code flexibility in creating templates\"\n    @element \"li\", \"No magic, just functions, it's just coffeescript\"\n  \n"));
+    this.e("section split", function() {
+      this.e("section", function() {
+        this.e("h2", "What");
+        this.e("p", function() {
+          this.t("A function ");
+          this.e("code", "e");
+          return this.t(" that returns a DOM element and lets you compose structures like this:");
+        });
+        return this.e(CoffeeCodeBlock("TODO"));
       });
-      this.element("section", function() {
-        this.element("h1", "Why");
-        return this.element("ul", function() {
-          this.element("li", "Less context switching between HTML and script");
-          this.element("li", "There is one hierarchy: The code hierarchy");
-          this.element("li", "Full code flexibility in creating templates");
-          return this.element("li", "No magic, just functions, it's just coffeescript");
+      this.e("section", function() {
+        this.e("h2", "Why");
+        return this.e("ul", function() {
+          this.e("li", "No context switching from HTML to script");
+          this.e("li", "There is one hierarchy: The code hierarchy");
+          this.e("li", 'Templates with full code flexibility');
+          return this.e("li", "No framework magic, it's just functions");
         });
       });
-      return this.element("section", function() {
-        this.element("h1", "How");
-        return this.element("ol", function() {
-          this.element("li", function() {
-            this.text("download it from github ");
-            return this.element("a", "here");
+      return this.e("section", function() {
+        this.e("h2", "How");
+        this.e("p", "Option 1: just.coffee.js");
+        this.e("ol", function() {
+          this.e("li", function() {
+            this.e("a", function() {
+              this.t("Download it from GitHub");
+              return this.attribute("href", "www.google.com");
+            });
+            return this.t(" into your project folder");
           });
-          this.element("li", "add the script tag to your header");
-          return this.element("li", "start using it!");
+          this.e("li", "Add the script tag to your header");
+          return this.e("li", "Profit!");
+        });
+        this.e("p", "Option 2: just.coffee");
+        return this.e("ol", function() {
+          this.e("li", function() {
+            return this.e("a", function() {
+              this.t("Download it from GitHub");
+              return this.attribute("href", "www.google.com");
+            });
+          });
+          this.e("li", "??? (do your coffeescript thing)");
+          return this.e("li", "Profit!");
         });
       });
     });
-    this.element("section", function() {
-      this.element("h1", "A rose by any other name");
-      this.element("p", "To create an element, just provide the class name(s) you want it to have.");
-      this.element(CoffeeCodeBlock("# Class names which are valid HTML tags will parse accordingly\nelement \"h1\"   # <h1 class=\"h1\"></h1>\nelement \"p\"    # <p class=\"p\"></p>\nelement \"span\" # <span class=\"span\"></span>\n\n# Unknown tags will create divs with that class name\nelement \"foo\" # <div class=\"foo\"></div>\n\n# Multiple class names can be given in the string\n# If there are valid HTML tags among the class names, the first is used.\nelement \"cheese ball cake\" # <div class=\"cheese ball cake\"></div>\nelement \"span h1 lobster\"  # <span class=\"span h1 lobster\"></span>"));
-      return this.element("p", "You can also pass an already created DOM element instead of a string. This does nothing on its own, but is useful when calling it with an oncreate function or attaching it to a parent element");
+    this.e("section", function() {
+      this.e("h2", "A rose by any other name");
+      this.e("p", function() {
+        this.t("The core of just.coffee is a function ");
+        this.e("code", "e");
+        return this.t(" that creates DOM elements. Just provide the class name(s) you want it to have.");
+      });
+      return this.e(CoffeeCodeBlock("# Class names which are valid HTML tags will parse accordingly\ne \"h2\"   # <h2 class=\"h2\"></h2>\ne \"p\"    # <p class=\"p\"></p>\ne \"span\" # <span class=\"span\"></span>\n\n# Unknown tags will create divs with that class name\ne \"foo\" # <div class=\"foo\"></div>\n\n# Multiple class names can be given in the string\n# If there are multiple valid HTML tags among the class names, the first valid HTML tag is used.\ne \"cheese ball cake\" # <div class=\"cheese ball cake\"></div>\ne \"span h2 lobster\"  # <span class=\"span h2 lobster\"></span>\ne \"foo p bar section\"  # <p class=\"foo p bar section\"></span>"));
     });
-    this.element("section", function() {
-      this.element("h1", "Batteries included");
-      return this.element("p", "Each element can be given a function to be called on its creation. This is done in the context of the created element.");
+    this.e("section", function() {
+      this.e("h2", "Batteries included");
+      this.e("p", function() {
+        this.t("The second argument to ");
+        this.e("code", "e");
+        this.t(" is an ");
+        this.e("code", "oncreate");
+        return this.t(" function that is called in the context of the created element.");
+      });
+      return this.e(CoffeeCodeBlock("\n  # The \"@\" symbol is coffeescript shorthand for \"this.\"\n  \n  # Creating <div class=\"aFunkyDiv\">FUNKY!</div>\n  # using a predefined function for oncreate      \n  aFunkyFunction = -> @innerHTML = \"FUNKY!\"\n  e \"aFunkyDiv\", aFunkyFunction\n  \n  # Doing the same thing using an anonymous function\n  e \"aFunkyDiv\", -> this.innerHTML = \"FUNKY!\"\n  \n  # buttons!\n  e \"aButton\", ->\n    @innerHTML = \"Shut up!\"\n    @onclick = ->\n      alert \"Help! Help! I'm being pressed!\"\n    \n  # programatic content!\n  e \"aSongMyDearLady\", ->\n    totalBottles = 99\n    songLyrics = \"\"\n    while totalBottles >= 0\n      lyricAddition = totalBottles + \" bottles of beer on the wall! \" + totalBottles + \" bottles of beer!\"\n      songLyrics += lyricAddition\n      totalBottles -= 1\n    @innerHTML = songLyrics  "));
     });
-    this.element("section", function() {
-      this.element("h1", "I heard you like elements");
-      this.element("p", "Each Element also has a element function that creates an element and adds it as a child node to the Element.");
-      this.element(CoffeeCodeBlock("foo = element \"foo\"\n# Just creates an free standing <div class=\"foo\"></div>\n\nfoo.element \"bar\"\n# foo now has a bar nested inside it\n# <div class=\"foo\">\n#   <div class=\"bar\"></div>  \n# </div>"));
-      this.element("p", "Use this inside an elements oncreate function with the @ symbol. This allows declarative creation of DOM hierarchies.");
-      return this.element(CoffeeCodeBlock("foobarbazqux = element \"foo\", ->\n  @element \"bar\", ->\n    @element \"baz\", ->\n      @element \"qux\"\n\n# <div class=\"foo\">\n#   <div class=\"bar\">\n#     <div class=\"baz\">\n#       <div class=\"qux\"></div>\n#     </div>\n#   </div>\n# </div>"));
+    this.e("section", function() {
+      this.e("h2", "I heard you like elements");
+      this.e("p", function() {
+        this.t("The ");
+        this.e("code", "e");
+        return this.t(" function can also be called in the context of an existing element. This automatically appends the newly created element as a child to the existing element.");
+      });
+      this.e(CoffeeCodeBlock("foo = e \"foo\"\n# Just creates an free standing <div class=\"foo\"></div>\n\nfoo.e \"bar\"\n# foo now has a bar nested inside it\n# <div class=\"foo\">\n#   <div class=\"bar\"></div>  \n# </div>"));
+      this.e("p", function() {
+        this.t(" Use this inside an elements ");
+        this.e("code", "oncreate");
+        this.t(" function with the ");
+        this.e("code", "@");
+        return this.t(" symbol. This allows declarative creation of DOM hierarchies.");
+      });
+      this.e(CoffeeCodeBlock("# The \"@\" symbol is coffeescript shorthand for \"this.\"\n\nfoobarbazqux = e \"foo\", ->\n  @e \"bar\", ->\n    @e \"baz\", ->\n      @e \"img qux\", ->\n        @src = \"aDuck.png\"\n\n# <div class=\"foo\">\n#   <div class=\"bar\">\n#     <div class=\"baz\">\n#       <img class=\"img qux\" src=\"aDuck.png\">\n#     </div>\n#   </div>\n# </div>"));
+      this.e("p", function() {
+        this.t("To add text nodes, use the handy dandy ");
+        this.e("code", "t");
+        return this.t(" function.");
+      });
+      return this.e(CoffeeCodeBlock("aStackOfCake = e \"cake\", ->\n  @t \"yes this is cake and \"\n  @e \"someIcing\", ->\n    @t \"some Icing\"\n\n# <div class=\"cake\">\n#   \"yes this is cake and\"\n#   <div class=\"bar\">\"some Icing\"</div>\n# </div>"));
     });
-    return this.element("section", function() {
-      this.element("h1", "Snack packs");
-      this.element("p", "To make something modular just wrap it in a function");
-      return this.element(CoffeeCodeBlock("FoobarSnack = (snackName)->\n  element \"foo\", ->\n    element \"bar\", snackName\n\ncheeseNames = [\"cheddar\", \"swiss\", \"blue\"]\ncheesePlate = element \"cheesePlate\", ->\n  for cheeseName in cheeseNames\n    @element FoobarSnack cheeseName\n\n# <div class=\"cheesePlate\">\n#   <div class=\"foo\">\n#     <div class=\"bar\">cheddar</div>\n#   </div>\n#   <div class=\"foo\">\n#     <div class=\"bar\">swiss</div>\n#   </div>\n#   <div class=\"foo\">\n#     <div class=\"bar\">blue</div>\n#   </div>\n# </div>"));
+    this.e("section", function() {
+      this.e("h2", "We care not where thou art from");
+      this.e("p", function() {
+        this.t("You can also use ");
+        this.e("code", "e");
+        return this.t(" to add existing elements.");
+      });
+      this.e(CoffeeCodeBlock("aPreMadeElement = e \"aPreMadeElement\"\naTraditionallyMadeElement = document.createElement \"div\"\naTraditionallyMadeElement.className = \"aTraditionallyMadeElement\"\n\naBoxOfSox = e \"aBoxOfSox\", ->\n  @e aPreMadeElement\n  @e aTraditionallyMadeElement\n  @e \"aFreshlyMadeElement\"\n\n# <div class=\"aBoxOfSox\">\n#   <div class=\"aPreMadeElement\"></div>\n#   <div class=\"aTraditionallyMadeElement\"></div>\n#   <div class=\"aFreshlyMadeElement\"></div>\n# </div>"));
+      this.e("p", function() {
+        return this.t("You can also use it to wrap existing elements with a function.");
+      });
+      return this.e(CoffeeCodeBlock("aBoringDiv = document.createElement \"div\"\nanExcitingButtonDiv = e aBoringDiv, ->\n  @className = \"anExcitingButtonDiv\"\n  @onclick = -> alert \"I used to be a boring div like you, but then I took a function to the e\"\n"));
+    });
+    this.e("section", function() {
+      this.e("h2", "Mr Clean");
+      this.e("p", function() {
+        this.t("To reduce syntactic cruft, you can directly pass a string or element inplace of an ");
+        this.e("code", "oncreate");
+        return this.t(" function");
+      });
+      return this.e(CoffeeCodeBlock("# This\ne \"code\", \"foobar\"\n\n# is equivalent to this\ne \"code\", ->\n  @t \"foobar\"\n\n# which both return\n# <code class=\"code\">foobar</code>\n  \n# Similarly, this\ne \"pre\", e \"code\", \"foobar\"\n\n# is equivalent to this\ne \"pre\", ->\n  @e \"code\", ->\n    @t \"foobar\"\n  \n# which both return\n# <pre class=\"pre\"><code class=\"code\">foobar</code></pre>\n\n"));
+    });
+    return this.e("section", function() {
+      this.e("h2", "Snack packs");
+      this.e("p", "To make something modular just wrap it in a function");
+      return this.e(CoffeeCodeBlock("FoobarSnack = (snackName)->\n  e \"foo\", ->\n    e \"bar\", snackName\n\ncheeseNames = [\"cheddar\", \"swiss\", \"blue\"]\ncheesePlate = e \"cheesePlate\", ->\n  for cheeseName in cheeseNames\n    @e FoobarSnack cheeseName\n\n# <div class=\"cheesePlate\">\n#   <div class=\"foo\">\n#     <div class=\"bar\">cheddar</div>\n#   </div>\n#   <div class=\"foo\">\n#     <div class=\"bar\">swiss</div>\n#   </div>\n#   <div class=\"foo\">\n#     <div class=\"bar\">blue</div>\n#   </div>\n# </div>"));
     });
   });
 

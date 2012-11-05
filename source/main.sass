@@ -1,13 +1,13 @@
 @import "compass"
 @import url(http://fonts.googleapis.com/css?family=Quicksand:300)
-@import url(http://fonts.googleapis.com/css?family=Muli:300)
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300)
 
 $headerFontFamily: 'Quicksand', sans-serif
-$readableFontFamily: 'Muli', sans-serif
+$readableFontFamily: 'Open Sans', sans-serif
 $readableFontSize: 16px
 $codeFontFamily: Courier New, monospace
 $codeFontSize: 16px
-$codeBackground: #EEE
+$codeBackground: #FCFCFC
 
 *
   @include box-sizing(border-box)
@@ -18,14 +18,11 @@ body
   @include box-align(center)
 
 
-
-
-
 .article
   @include display-box
   @include box-orient(vertical)
   padding: 40px
-  max-width: 1000px
+  max-width: 1200px
   font-family: $readableFontFamily
   font-size: $readableFontSize
   .header
@@ -34,6 +31,7 @@ body
     .title
       display: inline
       font-size: 40px
+      font-weight: 700
       margin-right: 20px
     .subtitle
       display: inline
@@ -44,7 +42,11 @@ body
     margin-bottom: 60px
     &:last-child 
       margin-bottom: 0px
-    .h1
+    .li
+      margin-bottom: 10px
+      &:last-child
+        margin-bottom: 0px
+    .h2
       margin: 0px
       font-family: $headerFontFamily
       font-size: 30px
@@ -55,11 +57,13 @@ body
         font-family: $codeFontFamily
         font-size: $codeFontSize
     &.split
-      @include box-orient(horizontal)
-      @include box-pack(center)
-      @media (max-width: 1000px)
-        @include box-orient(vertical)
-        @include box-pack(start)
+      @include box-orient(vertical)
+      @include box-pack(start)
+      @media (min-width: 1000px)
+        @include box-orient(horizontal)
+        @include box-pack(center)
+        .section
+          margin-bottom: 0px
       .section
         width: 100%
         @include box-flex(1)

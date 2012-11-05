@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Quicksand:300);
-@import url(http://fonts.googleapis.com/css?family=Muli:300);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
 /* line 12, source/main.sass */
 * {
   -webkit-box-sizing: border-box;
@@ -21,7 +21,7 @@ body {
   -ms-box-align: center;
   box-align: center; }
 
-/* line 24, source/main.sass */
+/* line 21, source/main.sass */
 .article {
   display: -webkit-box;
   display: -moz-box;
@@ -32,23 +32,24 @@ body {
   -ms-box-orient: vertical;
   box-orient: vertical;
   padding: 40px;
-  max-width: 1000px;
-  font-family: "Muli", sans-serif;
+  max-width: 1200px;
+  font-family: "Open Sans", sans-serif;
   font-size: 16px; }
-  /* line 31, source/main.sass */
+  /* line 28, source/main.sass */
   .article .header {
     margin-bottom: 80px;
     font-family: "Quicksand", sans-serif; }
-    /* line 34, source/main.sass */
+    /* line 31, source/main.sass */
     .article .header .title {
       display: inline;
       font-size: 40px;
+      font-weight: 700;
       margin-right: 20px; }
-    /* line 38, source/main.sass */
+    /* line 36, source/main.sass */
     .article .header .subtitle {
       display: inline;
       font-size: 20px; }
-  /* line 41, source/main.sass */
+  /* line 39, source/main.sass */
   .article .section {
     display: -webkit-box;
     display: -moz-box;
@@ -59,44 +60,53 @@ body {
     -ms-box-orient: vertical;
     box-orient: vertical;
     margin-bottom: 60px; }
-    /* line 45, source/main.sass */
+    /* line 43, source/main.sass */
     .article .section:last-child {
       margin-bottom: 0px; }
-    /* line 47, source/main.sass */
-    .article .section .h1 {
+    /* line 45, source/main.sass */
+    .article .section .li {
+      margin-bottom: 10px; }
+      /* line 47, source/main.sass */
+      .article .section .li:last-child {
+        margin-bottom: 0px; }
+    /* line 49, source/main.sass */
+    .article .section .h2 {
       margin: 0px;
       font-family: "Quicksand", sans-serif;
       font-size: 30px; }
-    /* line 51, source/main.sass */
+    /* line 53, source/main.sass */
     .article .section .pre {
       padding: 20px;
-      background: #eeeeee; }
-      /* line 54, source/main.sass */
+      background: #fcfcfc; }
+      /* line 56, source/main.sass */
       .article .section .pre .code {
         font-family: Courier New, monospace;
         font-size: 16px; }
-    /* line 57, source/main.sass */
+    /* line 59, source/main.sass */
     .article .section.split {
-      -webkit-box-orient: horizontal;
-      -moz-box-orient: horizontal;
-      -ms-box-orient: horizontal;
-      box-orient: horizontal;
-      -webkit-box-pack: center;
-      -moz-box-pack: center;
-      -ms-box-pack: center;
-      box-pack: center; }
-      @media (max-width: 1000px) {
-        /* line 57, source/main.sass */
+      -webkit-box-orient: vertical;
+      -moz-box-orient: vertical;
+      -ms-box-orient: vertical;
+      box-orient: vertical;
+      -webkit-box-pack: start;
+      -moz-box-pack: start;
+      -ms-box-pack: start;
+      box-pack: start; }
+      @media (min-width: 1000px) {
+        /* line 59, source/main.sass */
         .article .section.split {
-          -webkit-box-orient: vertical;
-          -moz-box-orient: vertical;
-          -ms-box-orient: vertical;
-          box-orient: vertical;
-          -webkit-box-pack: start;
-          -moz-box-pack: start;
-          -ms-box-pack: start;
-          box-pack: start; } }
-      /* line 63, source/main.sass */
+          -webkit-box-orient: horizontal;
+          -moz-box-orient: horizontal;
+          -ms-box-orient: horizontal;
+          box-orient: horizontal;
+          -webkit-box-pack: center;
+          -moz-box-pack: center;
+          -ms-box-pack: center;
+          box-pack: center; }
+          /* line 65, source/main.sass */
+          .article .section.split .section {
+            margin-bottom: 0px; } }
+      /* line 67, source/main.sass */
       .article .section.split .section {
         width: 100%;
         -webkit-box-flex: 1;

@@ -1,132 +1,246 @@
 #@codekit-prepend "just.coffee";
-document.body.element "background"
+
+document.body.e "background"
 
 CoffeeCodeBlock = (string)->
-  @element "pre", ->
-    @element "code prettyprint lang-coffee", string
+  @e "pre", @e "code prettyprint lang-coffee", string
 
 
-document.body.element "article", ->
-    
-  @element "header", ->
-    @element "div title", "just.coffee"
-    @element "subtitle", "Build the DOM using Coffeescript"
+document.body.e "article", ->
+  @e "header", ->
+    @e "h1 title", "just.coffee"
+    @e "span subtitle", "Build the DOM using Coffeescript"
   
-  @element "section split", ->
-    @element "section", ->
-      @element "h1", "What"
-      @element "p", "Simple helper functions that let you build the DOM like this"
-      @element CoffeeCodeBlock """
-        @element "why", ->
-          @element "h1", "Why"
-          @element "ul", ->
-            @element "li", "Less cognitive dissonance switching between HTML and script"
-            @element "li", "There is one hierarchy: The code hierarchy"
-            @element "li", "Full code flexibility in creating templates"
-            @element "li", "No magic, just functions, it's just coffeescript"
+  @e "section split", ->
+    @e "section", ->
+      @e "h2", "What"
+      @e "p", ->
+        @t "A function "
+        @e "code", "e"
+        @t " that returns a DOM element and lets you compose structures like this:"
+      
+      @e CoffeeCodeBlock """
+        TODO
+      """ 
+    
+    @e "section", ->
+      @e "h2", "Why"
+      @e "ul", ->
+        @e "li", "No context switching from HTML to script"
+        @e "li", "There is one hierarchy: The code hierarchy"
+        @e "li", 'Templates with full code flexibility'
+        @e "li", "No framework magic, it's just functions"
+      
+    
+    @e "section"  , ->
+      @e "h2", "How"
+      @e "p", "Option 1: just.coffee.js"
+      @e "ol", ->
+        @e "li", ->
+          @e "a", ->
+            @t "Download it from GitHub"
+            @attribute "href", "www.google.com"
+          
+          @t " into your project folder"
+        
+        @e "li", "Add the script tag to your header"
+        @e "li", "Profit!"
+      
+      @e "p", "Option 2: just.coffee"
+      @e "ol", ->
+        @e "li", ->
+          @e "a", ->
+            @t "Download it from GitHub"
+            @attribute "href", "www.google.com"
           
         
-      """      
-    
-    @element "section", ->
-      @element "h1", "Why"
-      @element "ul", ->
-        @element "li", "Less context switching between HTML and script"
-        @element "li", "There is one hierarchy: The code hierarchy"
-        @element "li", "Full code flexibility in creating templates"
-        @element "li", "No magic, just functions, it's just coffeescript"
-      
-    
-    @element "section"  , ->
-      @element "h1", "How"
-      @element "ol", ->
-        @element "li", ->
-          @text "download it from github "
-          @element "a", "here"
-        @element "li", "add the script tag to your header"
-        @element "li", "start using it!"
-      
+        @e "li", "??? (do your coffeescript thing)"
+        @e "li", "Profit!"
       
     
   
-  @element "section", ->
-    @element "h1", "A rose by any other name"
-    @element "p", "To create an element, just provide the class name(s) you want it to have."
-    @element CoffeeCodeBlock """
+  @e "section", ->
+    @e "h2", "A rose by any other name"
+    @e "p", ->
+      @t "The core of just.coffee is a function "; @e "code", "e"; @t " that creates DOM elements. Just provide the class name(s) you want it to have."
+    
+    @e CoffeeCodeBlock """
                     # Class names which are valid HTML tags will parse accordingly
-                    element "h1"   # <h1 class="h1"></h1>
-                    element "p"    # <p class="p"></p>
-                    element "span" # <span class="span"></span>
+                    e "h2"   # <h2 class="h2"></h2>
+                    e "p"    # <p class="p"></p>
+                    e "span" # <span class="span"></span>
                     
                     # Unknown tags will create divs with that class name
-                    element "foo" # <div class="foo"></div>
+                    e "foo" # <div class="foo"></div>
                     
                     # Multiple class names can be given in the string
-                    # If there are valid HTML tags among the class names, the first is used.
-                    element "cheese ball cake" # <div class="cheese ball cake"></div>
-                    element "span h1 lobster"  # <span class="span h1 lobster"></span>
+                    # If there are multiple valid HTML tags among the class names, the first valid HTML tag is used.
+                    e "cheese ball cake" # <div class="cheese ball cake"></div>
+                    e "span h2 lobster"  # <span class="span h2 lobster"></span>
+                    e "foo p bar section"  # <p class="foo p bar section"></span>
                     """
-    @element "p", "You can also pass an already created DOM element instead of a string. This does nothing on its own, but is useful when calling it with an oncreate function or attaching it to a parent element"
   
-  @element "section", ->
-    @element "h1", "Batteries included"
-    @element "p", "Each element can be given a function to be called on its creation. This is done in the context of the created element."
-
-  @element "section", ->
-    @element "h1", "I heard you like elements"
-    @element "p", "Each Element also has a element function that creates an element and adds it as a child node to the Element."
+  @e "section", ->
+    @e "h2", "Batteries included"
+    @e "p", -> @t "The second argument to "; @e "code", "e"; @t " is an "; @e "code", "oncreate" ;@t " function that is called in the context of the created element."
+    @e CoffeeCodeBlock """
     
-    @element CoffeeCodeBlock """
-                    foo = element "foo"
-                    # Just creates an free standing <div class="foo"></div>
+      # The "@" symbol is coffeescript shorthand for "this."
+      
+      # Creating <div class="aFunkyDiv">FUNKY!</div>
+      # using a predefined function for oncreate      
+      aFunkyFunction = -> @innerHTML = "FUNKY!"
+      e "aFunkyDiv", aFunkyFunction
+      
+      # Doing the same thing using an anonymous function
+      e "aFunkyDiv", -> this.innerHTML = "FUNKY!"
+      
+      # buttons!
+      e "aButton", ->
+        @innerHTML = "Shut up!"
+        @onclick = ->
+          alert "Help! Help! I'm being pressed!"
+        
+      # programatic content!
+      e "aSongMyDearLady", ->
+        totalBottles = 99
+        songLyrics = ""
+        while totalBottles >= 0
+          lyricAddition = totalBottles + " bottles of beer on the wall! " + totalBottles + " bottles of beer!"
+          songLyrics += lyricAddition
+          totalBottles -= 1
+        @innerHTML = songLyrics  
+    """
+  
+  @e "section", ->
+    @e "h2", "I heard you like elements"
+    @e "p", -> 
+      @t "The "; @e "code", "e"; @t " function can also be called in the context of an existing element. This automatically appends the newly created element as a child to the existing element."
+    
+    @e CoffeeCodeBlock """
+      foo = e "foo"
+      # Just creates an free standing <div class="foo"></div>
 
-                    foo.element "bar"
-                    # foo now has a bar nested inside it
-                    # <div class="foo">
-                    #   <div class="bar"></div>  
-                    # </div>
-                    """
-    @element "p", "Use this inside an elements oncreate function with the @ symbol. This allows declarative creation of DOM hierarchies."
-    @element CoffeeCodeBlock """
-                    foobarbazqux = element "foo", ->
-                      @element "bar", ->
-                        @element "baz", ->
-                          @element "qux"
-                    
-                    # <div class="foo">
-                    #   <div class="bar">
-                    #     <div class="baz">
-                    #       <div class="qux"></div>
-                    #     </div>
-                    #   </div>
+      foo.e "bar"
+      # foo now has a bar nested inside it
+      # <div class="foo">
+      #   <div class="bar"></div>  
+      # </div>
+    """
+    @e "p", -> @t " Use this inside an elements "; @e "code", "oncreate"; @t " function with the "; @e "code", "@"; @t " symbol. This allows declarative creation of DOM hierarchies."
+    @e CoffeeCodeBlock """
+      # The "@" symbol is coffeescript shorthand for "this."
+      
+      foobarbazqux = e "foo", ->
+        @e "bar", ->
+          @e "baz", ->
+            @e "img qux", ->
+              @src = "aDuck.png"
+
+      # <div class="foo">
+      #   <div class="bar">
+      #     <div class="baz">
+      #       <img class="img qux" src="aDuck.png">
+      #     </div>
+      #   </div>
+      # </div>
+    """
+    
+    @e "p", -> @t "To add text nodes, use the handy dandy "; @e "code", "t"; @t " function."
+    @e CoffeeCodeBlock """
+                    aStackOfCake = e "cake", ->
+                      @t "yes this is cake and "
+                      @e "someIcing", ->
+                        @t "some Icing"
+
+                    # <div class="cake">
+                    #   "yes this is cake and"
+                    #   <div class="bar">"some Icing"</div>
                     # </div>
                     """
   
-  @element "section", ->
-    @element "h1", "Snack packs"
-    @element "p", "To make something modular just wrap it in a function"
-    @element CoffeeCodeBlock """
-                    FoobarSnack = (snackName)->
-                      element "foo", ->
-                        element "bar", snackName
-                    
-                    cheeseNames = ["cheddar", "swiss", "blue"]
-                    cheesePlate = element "cheesePlate", ->
-                      for cheeseName in cheeseNames
-                        @element FoobarSnack cheeseName
-                    
-                    # <div class="cheesePlate">
-                    #   <div class="foo">
-                    #     <div class="bar">cheddar</div>
-                    #   </div>
-                    #   <div class="foo">
-                    #     <div class="bar">swiss</div>
-                    #   </div>
-                    #   <div class="foo">
-                    #     <div class="bar">blue</div>
-                    #   </div>
-                    # </div>
-                    """
+  @e "section", ->
+    @e "h2", "We care not where thou art from"
+    @e "p", -> @t "You can also use "; @e "code", "e"; @t " to add existing elements."
+    @e CoffeeCodeBlock """
+      aPreMadeElement = e "aPreMadeElement"
+      aTraditionallyMadeElement = document.createElement "div"
+      aTraditionallyMadeElement.className = "aTraditionallyMadeElement"
+      
+      aBoxOfSox = e "aBoxOfSox", ->
+        @e aPreMadeElement
+        @e aTraditionallyMadeElement
+        @e "aFreshlyMadeElement"
+      
+      # <div class="aBoxOfSox">
+      #   <div class="aPreMadeElement"></div>
+      #   <div class="aTraditionallyMadeElement"></div>
+      #   <div class="aFreshlyMadeElement"></div>
+      # </div>
+    """
+    @e "p", -> @t "You can also use it to wrap existing elements with a function."
+    @e CoffeeCodeBlock """
+      aBoringDiv = document.createElement "div"
+      anExcitingButtonDiv = e aBoringDiv, ->
+        @className = "anExcitingButtonDiv"
+        @onclick = -> alert "I used to be a boring div like you, but then I took a function to the e"
+      
+    """
+    
+  
+  @e "section", ->
+    @e "h2", "Mr Clean"
+    @e "p", -> @t "To reduce syntactic cruft, you can directly pass a string or element inplace of an "; @e "code", "oncreate"; @t " function"
+    @e CoffeeCodeBlock """
+      # This
+      e "code", "foobar"
+      
+      # is equivalent to this
+      e "code", ->
+        @t "foobar"
+      
+      # which both return
+      # <code class="code">foobar</code>
+        
+      # Similarly, this
+      e "pre", e "code", "foobar"
+      
+      # is equivalent to this
+      e "pre", ->
+        @e "code", ->
+          @t "foobar"
+        
+      # which both return
+      # <pre class="pre"><code class="code">foobar</code></pre>
+      
+      
+    """
+  
+  @e "section", ->
+    @e "h2", "Snack packs"
+    @e "p", "To make something modular just wrap it in a function"
+    @e CoffeeCodeBlock """
+      FoobarSnack = (snackName)->
+        e "foo", ->
+          e "bar", snackName
+      
+      cheeseNames = ["cheddar", "swiss", "blue"]
+      cheesePlate = e "cheesePlate", ->
+        for cheeseName in cheeseNames
+          @e FoobarSnack cheeseName
+      
+      # <div class="cheesePlate">
+      #   <div class="foo">
+      #     <div class="bar">cheddar</div>
+      #   </div>
+      #   <div class="foo">
+      #     <div class="bar">swiss</div>
+      #   </div>
+      #   <div class="foo">
+      #     <div class="bar">blue</div>
+      #   </div>
+      # </div>
+    """
   
 
 do prettyPrint

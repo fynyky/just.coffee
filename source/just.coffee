@@ -1,7 +1,7 @@
 # ----------------pollution----------------
-# window.element
-# Element.prototype.element
-# Element.prototype.text
+# window.e
+# Element.prototype.e
+# Element.prototype.t
 # Element.prototype.oncreate
 # Element.prototype.attribute
 # ------------------------------------------
@@ -32,7 +32,7 @@ validHTMLTags = [
 ] 
 
 # main function for making nodes
-window.element = (namesOrElement, oncreate)->
+window.e = (namesOrElement, oncreate)->
   
   
   # if function is passed an already built element
@@ -54,28 +54,31 @@ window.element = (namesOrElement, oncreate)->
     newElement.className = namesOrElement
   
   # regardless of where it came from
-  # bind and perform the oncreate function
-  # if its a string - then as a shortcut add it as its innerHTML
+  # general case: bind and perform the oncreate function
   if typeof oncreate is "function"
     newElement.oncreate = oncreate
+  
+  # shortcut: if its a string - then as a shortcut add it as its innerHTML
   else if typeof oncreate is "string"
     newElement.oncreate = -> @appendChild document.createTextNode oncreate
-    
+  
+  # if its a DOM element, then add it directly as a child
+  else if oncreate instanceof Element
+    newElement.oncreate = -> @appendChild oncreate
+  
   do newElement.oncreate if oncreate?
   
   # return it
   return newElement
 
 # build the node then stick it to parent
-Element.prototype.element = (name, oncreate)->
-  newElement = window.element name, oncreate
+Element.prototype.e = (name, oncreate)->
+  newElement = window.e name, oncreate
   @appendChild newElement
   return newElement
 
 # syntactic sugar for making text nodes more "declarative"
-# TODO this isnt working!!!!!
-# "a" elements already have a property text
-Element.prototype.text = (value)->
+Element.prototype.t = (value)->
   @appendChild document.createTextNode value
 
 # syntactic sugar for making attributs more "declarative"
