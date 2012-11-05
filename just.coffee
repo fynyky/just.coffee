@@ -1,6 +1,7 @@
 # ----------------pollution----------------
-# window.node
-# Element.prototype.node
+# window.e
+# Element.prototype.e
+# Element.prototype.t
 # Element.prototype.oncreate
 # Element.prototype.attribute
 # ------------------------------------------
@@ -31,45 +32,54 @@ validHTMLTags = [
 ] 
 
 # main function for making nodes
-window.element = (namesOrNode, oncreate)->
+window.e = (namesOrElement, oncreate)->
+  
   
   # if function is passed an already built element
   # then no need to build it
-  if namesOrNode instanceof Node then newNode = namesOrNode
+  if namesOrElement instanceof Element then newElement = namesOrElement
   
   # create the element of the appropriate type
   # if the name is already a valid html tag then create one of that type
   # otherwise default to a div and just set the classname
-  else if typeof namesOrNode is "string"
+  else if typeof namesOrElement is "string"
   
     # split the string to the individual class names
     # check to see if any of them are valid HTML tags
     # default to div otherwise
-    names = namesOrNode.split " "
+    names = namesOrElement.split " "
     validTags = (name for name in names when validHTMLTags.indexOf name >= 0)
     tag = validTags[0] ? "div"
-    newNode = document.createElement tag
-    newNode.className = namesOrNode
+    newElement = document.createElement tag
+    newElement.className = namesOrElement
   
   # regardless of where it came from
-  # bind and perform the oncreate function
-  newNode.oncreate = oncreate
-  if newNode.oncreate? then do newNode.oncreate
+  # general case: bind and perform the oncreate function
+  if typeof oncreate is "function"
+    newElement.oncreate = oncreate
+  
+  # shortcut: if its a string - then as a shortcut add it as its innerHTML
+  else if typeof oncreate is "string"
+    newElement.oncreate = -> @appendChild document.createTextNode oncreate
+  
+  # if its a DOM element, then add it directly as a child
+  else if oncreate instanceof Element
+    newElement.oncreate = -> @appendChild oncreate
+  
+  do newElement.oncreate if oncreate?
   
   # return it
-  return newNode
-
+  return newElement
 
 # build the node then stick it to parent
-Element.prototype.element = (name, oncreate)->
-  newNode = window.node name,oncreate
-  @appendChild newNode
-  return newNode
+Element.prototype.e = (name, oncreate)->
+  newElement = window.e name, oncreate
+  @appendChild newElement
+  return newElement
 
 # syntactic sugar for making text nodes more "declarative"
-Element.prototype.text = (value)->
+Element.prototype.t = (value)->
   @appendChild document.createTextNode value
-
 
 # syntactic sugar for making attributs more "declarative"
 Element.prototype.attribute = (name, value)->
