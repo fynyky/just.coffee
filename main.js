@@ -80,9 +80,9 @@
         this.e("p", function() {
           this.t("A function ");
           this.e("code", "e");
-          return this.t(" that returns a DOM element and lets you compose structures like this:");
+          return this.t(" that returns a DOM element and lets you compose structures using a function hierarchy like this:");
         });
-        return this.e(CoffeeCodeBlock("TODO"));
+        return this.e(CoffeeCodeBlock("document.body.e \"article\", ->\n  \n  @e \"header\", ->\n    @e \"h1 title\", \"just.coffee\"\n    @e \"span subtitle\", \"....\"\n  \n  @e \"section split\", ->\n    @e \"section\", ->\n      @e \"h2\", \"What\"\n      @e \"p\", ->\n        @t \"A function \"\n        @e \"code\", \"e\"\n        @t \"Whoa too meta\"\n  \n  @e \"anExampleElement\", ->\n    \n    aVariable = \"beep\"\n    @onclick = -> alert aVariable\n    \n    Food = (foodName) ->\n      e \"food\", foodName\n    \n    for item in [\"ice\", \"cream\"]\n      @e Food item\n    "));
       });
       this.e("section", function() {
         this.e("h2", "Why");
@@ -90,6 +90,7 @@
           this.e("li", "No context switching from HTML to script");
           this.e("li", "There is one hierarchy: The code hierarchy");
           this.e("li", 'Templates with full code flexibility');
+          this.e("li", 'Coffeescript is pretty');
           return this.e("li", "No framework magic, it's just functions");
         });
       });
@@ -98,11 +99,10 @@
         this.e("p", "Option 1: just.coffee.js");
         this.e("ol", function() {
           this.e("li", function() {
-            this.e("a", function() {
+            return this.e("a", function() {
               this.t("Download it from GitHub");
-              return this.attribute("href", "www.google.com");
+              return this.attribute("href", "https://github.com/fynyky/just.coffee/zipball/master");
             });
-            return this.t(" into your project folder");
           });
           this.e("li", "Add the script tag to your header");
           return this.e("li", "Profit!");
@@ -112,7 +112,7 @@
           this.e("li", function() {
             return this.e("a", function() {
               this.t("Download it from GitHub");
-              return this.attribute("href", "www.google.com");
+              return this.attribute("href", "https://github.com/fynyky/just.coffee/zipball/master");
             });
           });
           this.e("li", "??? (do your coffeescript thing)");

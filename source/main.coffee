@@ -17,10 +17,34 @@ document.body.e "article", ->
       @e "p", ->
         @t "A function "
         @e "code", "e"
-        @t " that returns a DOM element and lets you compose structures like this:"
+        @t " that returns a DOM element and lets you compose structures using a function hierarchy like this:"
       
       @e CoffeeCodeBlock """
-        TODO
+        document.body.e "article", ->
+          
+          @e "header", ->
+            @e "h1 title", "just.coffee"
+            @e "span subtitle", "...."
+          
+          @e "section split", ->
+            @e "section", ->
+              @e "h2", "What"
+              @e "p", ->
+                @t "A function "
+                @e "code", "e"
+                @t "Whoa too meta"
+          
+          @e "anExampleElement", ->
+            
+            aVariable = "beep"
+            @onclick = -> alert aVariable
+            
+            Food = (foodName) ->
+              e "food", foodName
+            
+            for item in ["ice", "cream"]
+              @e Food item
+            
       """ 
     
     @e "section", ->
@@ -29,6 +53,7 @@ document.body.e "article", ->
         @e "li", "No context switching from HTML to script"
         @e "li", "There is one hierarchy: The code hierarchy"
         @e "li", 'Templates with full code flexibility'
+        @e "li", 'Coffeescript is pretty'
         @e "li", "No framework magic, it's just functions"
       
     
@@ -39,9 +64,8 @@ document.body.e "article", ->
         @e "li", ->
           @e "a", ->
             @t "Download it from GitHub"
-            @attribute "href", "www.google.com"
+            @attribute "href", "https://github.com/fynyky/just.coffee/zipball/master"
           
-          @t " into your project folder"
         
         @e "li", "Add the script tag to your header"
         @e "li", "Profit!"
@@ -51,7 +75,7 @@ document.body.e "article", ->
         @e "li", ->
           @e "a", ->
             @t "Download it from GitHub"
-            @attribute "href", "www.google.com"
+            @attribute "href", "https://github.com/fynyky/just.coffee/zipball/master"
           
         
         @e "li", "??? (do your coffeescript thing)"
