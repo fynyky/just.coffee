@@ -9,7 +9,13 @@ CoffeeCodeBlock = (string)->
 document.body.e "article", ->
   @e "header", ->
     @e "h1 title", "just.coffee"
-    @e "span subtitle", "Build the DOM using Coffeescript"
+    @e "span subtitle", ->
+      @t "Build the DOM using "
+      @e "a", ->
+        @t "Coffeescript"
+        @attribute "href", "http://coffeescript.org/"
+      
+    
   
   @e "section split", ->
     @e "section", ->
@@ -53,7 +59,12 @@ document.body.e "article", ->
         @e "li", "No context switching from HTML to script"
         @e "li", "There is one hierarchy: The code hierarchy"
         @e "li", 'Templates with full code flexibility'
-        @e "li", 'Coffeescript is pretty'
+        @e "li", ->
+          @e "a", ->
+            @t "Coffeescript"
+            @attribute "href", "http://coffeescript.org/"
+          
+          @t " is pretty"
         @e "li", "No framework magic, it's just functions"
       
     
