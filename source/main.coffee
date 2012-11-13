@@ -16,9 +16,6 @@ document.body.e "article", ->
         @attribute "href", "http://coffeescript.org/"
       
     
-    @e "a gitHubLink", ->
-      @t "GitHub project"
-      @attribute "href", "https://github.com/fynyky/just.coffee"
   
   @e "section split", ->
     @e "section", ->
@@ -73,6 +70,13 @@ document.body.e "article", ->
     
     @e "section"  , ->
       @e "h2", "How"
+      @e "p", ->
+        @t "Check out the "
+        @e "a gitHubLink", ->
+          @t "GitHub project"
+          @attribute "href", "https://github.com/fynyky/just.coffee"
+        
+      
       @e "p", "Option 1: just.coffee.js"
       @e "ol", ->
         @e "li", ->
