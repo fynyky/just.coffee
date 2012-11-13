@@ -269,7 +269,7 @@ document.body.e "article", ->
     @e CoffeeCodeBlock """
       FoobarSnack = (snackName)->
         e "foo", ->
-          e "bar", snackName
+          @e "bar", snackName
       
       cheeseNames = ["cheddar", "swiss", "blue"]
       cheesePlate = e "cheesePlate", ->
