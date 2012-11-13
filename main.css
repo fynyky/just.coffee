@@ -37,19 +37,24 @@ body {
   font-size: 16px; }
   /* line 28, source/main.sass */
   .article .header {
+    position: relative;
     margin-bottom: 80px;
     font-family: "Quicksand", sans-serif; }
-    /* line 31, source/main.sass */
+    /* line 32, source/main.sass */
     .article .header .title {
       display: inline;
       font-size: 40px;
       font-weight: 700;
       margin-right: 20px; }
-    /* line 36, source/main.sass */
+    /* line 37, source/main.sass */
     .article .header .subtitle {
       display: inline;
       font-size: 20px; }
-  /* line 39, source/main.sass */
+    /* line 40, source/main.sass */
+    .article .header .gitHubLink {
+      display: block;
+      margin-top: 10px; }
+  /* line 43, source/main.sass */
   .article .section {
     display: -webkit-box;
     display: -moz-box;
@@ -60,29 +65,29 @@ body {
     -ms-box-orient: vertical;
     box-orient: vertical;
     margin-bottom: 60px; }
-    /* line 43, source/main.sass */
+    /* line 47, source/main.sass */
     .article .section:last-child {
       margin-bottom: 0px; }
-    /* line 45, source/main.sass */
+    /* line 49, source/main.sass */
     .article .section .li {
       margin-bottom: 10px; }
-      /* line 47, source/main.sass */
+      /* line 51, source/main.sass */
       .article .section .li:last-child {
         margin-bottom: 0px; }
-    /* line 49, source/main.sass */
+    /* line 53, source/main.sass */
     .article .section .h2 {
       margin: 0px;
       font-family: "Quicksand", sans-serif;
       font-size: 30px; }
-    /* line 53, source/main.sass */
+    /* line 57, source/main.sass */
     .article .section .pre {
       padding: 20px;
       background: #fcfcfc; }
-      /* line 56, source/main.sass */
+      /* line 60, source/main.sass */
       .article .section .pre .code {
         font-family: Courier New, monospace;
         font-size: 16px; }
-    /* line 59, source/main.sass */
+    /* line 63, source/main.sass */
     .article .section.split {
       -webkit-box-orient: vertical;
       -moz-box-orient: vertical;
@@ -93,7 +98,7 @@ body {
       -ms-box-pack: start;
       box-pack: start; }
       @media (min-width: 1000px) {
-        /* line 59, source/main.sass */
+        /* line 63, source/main.sass */
         .article .section.split {
           -webkit-box-orient: horizontal;
           -moz-box-orient: horizontal;
@@ -103,10 +108,10 @@ body {
           -moz-box-pack: center;
           -ms-box-pack: center;
           box-pack: center; }
-          /* line 65, source/main.sass */
+          /* line 69, source/main.sass */
           .article .section.split .section {
             margin-bottom: 0px; } }
-      /* line 67, source/main.sass */
+      /* line 71, source/main.sass */
       .article .section.split .section {
         width: 100%;
         -webkit-box-flex: 1;

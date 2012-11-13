@@ -26,6 +26,7 @@ body
   font-family: $readableFontFamily
   font-size: $readableFontSize
   .header
+    position: relative
     margin-bottom: 80px
     font-family: $headerFontFamily
     .title
@@ -36,6 +37,9 @@ body
     .subtitle
       display: inline
       font-size: 20px
+    .gitHubLink
+      display: block
+      margin-top: 10px
   .section
     @include display-box
     @include box-orient(vertical)
