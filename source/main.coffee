@@ -72,9 +72,14 @@ document.body.e "article", ->
       @e "h2", "How"
       @e "p", ->
         @t "Check out the "
-        @e "a gitHubLink", ->
+        @e "a", ->
           @t "GitHub project"
           @attribute "href", "https://github.com/fynyky/just.coffee"
+        
+        @t " and see "
+        @e "a", ->
+          @t "the source for this page"
+          @attribute "href", "https://github.com/fynyky/just.coffee/blob/gh-pages/source/main.coffee"
         
       
       @e "p", "Option 1: just.coffee.js"
