@@ -47,14 +47,14 @@ body {
   .article .header {
     position: relative;
     margin-bottom: 80px;
-    font-family: "Quicksand", sans-serif; }
-    /* line 40, source/main.sass */
+    font-family: "Quicksand", sans-serif;
+    text-shadow: rgba(0, 0, 0, 0.1); }
+    /* line 41, source/main.sass */
     .article .header .title {
       display: inline;
       font-size: 40px;
       margin-right: 20px;
-      font-weight: 400;
-      text-shadow: rgba(0, 0, 0, 0.1); }
+      font-weight: 400; }
     /* line 46, source/main.sass */
     .article .header .subtitle {
       display: inline;
@@ -84,18 +84,17 @@ body {
     .article .section .h2 {
       margin: 0px;
       font-family: "Quicksand", sans-serif;
-      text-shadow: rgba(0, 0, 0, 0.1);
       font-weight: 400;
       font-size: 30px; }
-    /* line 66, source/main.sass */
+    /* line 65, source/main.sass */
     .article .section .pre {
       padding: 20px;
       background: #fcfcfc; }
-      /* line 69, source/main.sass */
+      /* line 68, source/main.sass */
       .article .section .pre .code {
         font-family: Courier New, monospace;
         font-size: 16px; }
-    /* line 72, source/main.sass */
+    /* line 71, source/main.sass */
     .article .section.split {
       position: relative;
       -webkit-box-orient: vertical;
@@ -107,7 +106,7 @@ body {
       -ms-box-pack: start;
       box-pack: start; }
       @media (min-width: 1000px) {
-        /* line 72, source/main.sass */
+        /* line 71, source/main.sass */
         .article .section.split {
           display: block;
           -webkit-box-orient: horizontal;
@@ -118,7 +117,7 @@ body {
           -moz-box-pack: center;
           -ms-box-pack: center;
           box-pack: center; }
-          /* line 80, source/main.sass */
+          /* line 79, source/main.sass */
           .article .section.split .section {
             display: inline-block;
             vertical-align: top;
