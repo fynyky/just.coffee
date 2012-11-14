@@ -10,18 +10,26 @@ $codeFontSize: 16px
 $codeBackground: #FCFCFC
 
 *
+  position: relative
   @include box-sizing(border-box)
 
 body
+  width: 100%
   @include display-box
   @include box-orient(vertical)
   @include box-align(center)
 
 
 .article
+  position: absolute
+  left: 0px
+  right: 0px
+  margin-left: auto
+  margin-right: auto
   @include display-box
   @include box-orient(vertical)
   padding: 40px
+  width: 100%
   max-width: 1200px
   font-family: $readableFontFamily
   font-size: $readableFontSize
@@ -40,7 +48,7 @@ body
   .section
     @include display-box
     @include box-orient(vertical)
-    // width: 100%
+    width: 100%
     margin-bottom: 60px
     &:last-child 
       margin-bottom: 0px
@@ -60,13 +68,16 @@ body
         font-family: $codeFontFamily
         font-size: $codeFontSize
     &.split
+      position: relative
       @include box-orient(vertical)
       @include box-pack(start)
       @media (min-width: 1000px)
+        display: block
         @include box-orient(horizontal)
         @include box-pack(center)
         .section
+          display: inline-block
+          vertical-align: top
           width: 33.3%
           margin-bottom: 0px
-      .section
-        @include box-flex(1)
+      

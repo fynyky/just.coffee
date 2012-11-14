@@ -2,12 +2,14 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
 /* line 12, source/main.sass */
 * {
+  position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 15, source/main.sass */
+/* line 16, source/main.sass */
 body {
+  width: 100%;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-box;
@@ -21,8 +23,13 @@ body {
   -ms-box-align: center;
   box-align: center; }
 
-/* line 21, source/main.sass */
+/* line 23, source/main.sass */
 .article {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  margin-left: auto;
+  margin-right: auto;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-box;
@@ -32,25 +39,26 @@ body {
   -ms-box-orient: vertical;
   box-orient: vertical;
   padding: 40px;
+  width: 100%;
   max-width: 1200px;
   font-family: "Open Sans", sans-serif;
   font-size: 16px; }
-  /* line 28, source/main.sass */
+  /* line 36, source/main.sass */
   .article .header {
     position: relative;
     margin-bottom: 80px;
     font-family: "Quicksand", sans-serif; }
-    /* line 32, source/main.sass */
+    /* line 40, source/main.sass */
     .article .header .title {
       display: inline;
       font-size: 40px;
       margin-right: 20px;
       font-weight: 400; }
-    /* line 37, source/main.sass */
+    /* line 45, source/main.sass */
     .article .header .subtitle {
       display: inline;
       font-size: 20px; }
-  /* line 40, source/main.sass */
+  /* line 48, source/main.sass */
   .article .section {
     display: -webkit-box;
     display: -moz-box;
@@ -60,32 +68,34 @@ body {
     -moz-box-orient: vertical;
     -ms-box-orient: vertical;
     box-orient: vertical;
+    width: 100%;
     margin-bottom: 60px; }
-    /* line 45, source/main.sass */
+    /* line 53, source/main.sass */
     .article .section:last-child {
       margin-bottom: 0px; }
-    /* line 47, source/main.sass */
+    /* line 55, source/main.sass */
     .article .section .li {
       margin-bottom: 10px; }
-      /* line 49, source/main.sass */
+      /* line 57, source/main.sass */
       .article .section .li:last-child {
         margin-bottom: 0px; }
-    /* line 51, source/main.sass */
+    /* line 59, source/main.sass */
     .article .section .h2 {
       margin: 0px;
       font-family: "Quicksand", sans-serif;
       font-weight: 400;
       font-size: 30px; }
-    /* line 56, source/main.sass */
+    /* line 64, source/main.sass */
     .article .section .pre {
       padding: 20px;
       background: #fcfcfc; }
-      /* line 59, source/main.sass */
+      /* line 67, source/main.sass */
       .article .section .pre .code {
         font-family: Courier New, monospace;
         font-size: 16px; }
-    /* line 62, source/main.sass */
+    /* line 70, source/main.sass */
     .article .section.split {
+      position: relative;
       -webkit-box-orient: vertical;
       -moz-box-orient: vertical;
       -ms-box-orient: vertical;
@@ -95,8 +105,9 @@ body {
       -ms-box-pack: start;
       box-pack: start; }
       @media (min-width: 1000px) {
-        /* line 62, source/main.sass */
+        /* line 70, source/main.sass */
         .article .section.split {
+          display: block;
           -webkit-box-orient: horizontal;
           -moz-box-orient: horizontal;
           -ms-box-orient: horizontal;
@@ -105,13 +116,9 @@ body {
           -moz-box-pack: center;
           -ms-box-pack: center;
           box-pack: center; }
-          /* line 68, source/main.sass */
+          /* line 78, source/main.sass */
           .article .section.split .section {
+            display: inline-block;
+            vertical-align: top;
             width: 33.3%;
             margin-bottom: 0px; } }
-      /* line 71, source/main.sass */
-      .article .section.split .section {
-        -webkit-box-flex: 1;
-        -moz-box-flex: 1;
-        -ms-box-flex: 1;
-        box-flex: 1; }
