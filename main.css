@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Quicksand:300);
+@import url(http://fonts.googleapis.com/css?family=Quicksand:300,400);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
 /* line 12, source/main.sass */
 * {
@@ -44,8 +44,8 @@ body {
     .article .header .title {
       display: inline;
       font-size: 40px;
-      font-weight: 700;
-      margin-right: 20px; }
+      margin-right: 20px;
+      font-weight: 400; }
     /* line 37, source/main.sass */
     .article .header .subtitle {
       display: inline;
@@ -61,29 +61,30 @@ body {
     -ms-box-orient: vertical;
     box-orient: vertical;
     margin-bottom: 60px; }
-    /* line 44, source/main.sass */
+    /* line 45, source/main.sass */
     .article .section:last-child {
       margin-bottom: 0px; }
-    /* line 46, source/main.sass */
+    /* line 47, source/main.sass */
     .article .section .li {
       margin-bottom: 10px; }
-      /* line 48, source/main.sass */
+      /* line 49, source/main.sass */
       .article .section .li:last-child {
         margin-bottom: 0px; }
-    /* line 50, source/main.sass */
+    /* line 51, source/main.sass */
     .article .section .h2 {
       margin: 0px;
       font-family: "Quicksand", sans-serif;
+      font-weight: 400;
       font-size: 30px; }
-    /* line 54, source/main.sass */
+    /* line 56, source/main.sass */
     .article .section .pre {
       padding: 20px;
       background: #fcfcfc; }
-      /* line 57, source/main.sass */
+      /* line 59, source/main.sass */
       .article .section .pre .code {
         font-family: Courier New, monospace;
         font-size: 16px; }
-    /* line 60, source/main.sass */
+    /* line 62, source/main.sass */
     .article .section.split {
       -webkit-box-orient: vertical;
       -moz-box-orient: vertical;
@@ -94,7 +95,7 @@ body {
       -ms-box-pack: start;
       box-pack: start; }
       @media (min-width: 1000px) {
-        /* line 60, source/main.sass */
+        /* line 62, source/main.sass */
         .article .section.split {
           -webkit-box-orient: horizontal;
           -moz-box-orient: horizontal;
@@ -104,12 +105,12 @@ body {
           -moz-box-pack: center;
           -ms-box-pack: center;
           box-pack: center; }
-          /* line 66, source/main.sass */
+          /* line 68, source/main.sass */
           .article .section.split .section {
+            width: 33.3%;
             margin-bottom: 0px; } }
-      /* line 68, source/main.sass */
+      /* line 71, source/main.sass */
       .article .section.split .section {
-        width: 100%;
         -webkit-box-flex: 1;
         -moz-box-flex: 1;
         -ms-box-flex: 1;
