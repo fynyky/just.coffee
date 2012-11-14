@@ -54,7 +54,7 @@ body {
       font-size: 40px;
       margin-right: 20px;
       font-weight: 400;
-      text-shadow: rgba(0, 0, 0, 0.1); }
+      text-shadow: 0 0 1px rgba(0, 0, 0, 0.1); }
     /* line 46, source/main.sass */
     .article .header .subtitle {
       display: inline;
@@ -84,7 +84,7 @@ body {
     .article .section .h2 {
       margin: 0px;
       font-family: "Quicksand", sans-serif;
-      text-shadow: rgba(0, 0, 0, 0.1);
+      text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
       font-weight: 400;
       font-size: 30px; }
     /* line 66, source/main.sass */
