@@ -47,19 +47,18 @@ body {
   .article .header {
     position: relative;
     margin-bottom: 80px;
-    font-family: "Quicksand", sans-serif;
-    text-shadow: rgba(0, 0, 0, 0.1); }
-    /* line 41, source/main.sass */
+    font-family: "Quicksand", sans-serif; }
+    /* line 40, source/main.sass */
     .article .header .title {
       display: inline;
       font-size: 40px;
       margin-right: 20px;
       font-weight: 400; }
-    /* line 46, source/main.sass */
+    /* line 45, source/main.sass */
     .article .header .subtitle {
       display: inline;
       font-size: 20px; }
-  /* line 49, source/main.sass */
+  /* line 48, source/main.sass */
   .article .section {
     display: -webkit-box;
     display: -moz-box;
@@ -71,30 +70,30 @@ body {
     box-orient: vertical;
     width: 100%;
     margin-bottom: 60px; }
-    /* line 54, source/main.sass */
+    /* line 53, source/main.sass */
     .article .section:last-child {
       margin-bottom: 0px; }
-    /* line 56, source/main.sass */
+    /* line 55, source/main.sass */
     .article .section .li {
       margin-bottom: 10px; }
-      /* line 58, source/main.sass */
+      /* line 57, source/main.sass */
       .article .section .li:last-child {
         margin-bottom: 0px; }
-    /* line 60, source/main.sass */
+    /* line 59, source/main.sass */
     .article .section .h2 {
       margin: 0px;
       font-family: "Quicksand", sans-serif;
       font-weight: 400;
       font-size: 30px; }
-    /* line 65, source/main.sass */
+    /* line 64, source/main.sass */
     .article .section .pre {
       padding: 20px;
       background: #fcfcfc; }
-      /* line 68, source/main.sass */
+      /* line 67, source/main.sass */
       .article .section .pre .code {
         font-family: Courier New, monospace;
         font-size: 16px; }
-    /* line 71, source/main.sass */
+    /* line 70, source/main.sass */
     .article .section.split {
       position: relative;
       -webkit-box-orient: vertical;
@@ -106,7 +105,7 @@ body {
       -ms-box-pack: start;
       box-pack: start; }
       @media (min-width: 1000px) {
-        /* line 71, source/main.sass */
+        /* line 70, source/main.sass */
         .article .section.split {
           display: block;
           -webkit-box-orient: horizontal;
@@ -117,7 +116,7 @@ body {
           -moz-box-pack: center;
           -ms-box-pack: center;
           box-pack: center; }
-          /* line 79, source/main.sass */
+          /* line 78, source/main.sass */
           .article .section.split .section {
             display: inline-block;
             vertical-align: top;
