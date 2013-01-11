@@ -48,7 +48,7 @@ window.e = (namesOrElement, oncreate)->
     # check to see if any of them are valid HTML tags
     # default to div otherwise
     names = namesOrElement.split " "
-    validTags = (name for name in names when validHTMLTags.indexOf name >= 0)
+    validTags = (name for name in names when (validHTMLTags.indexOf name) >= 0)
     tag = validTags[0] ? "div"
     newElement = document.createElement tag
     newElement.className = namesOrElement
